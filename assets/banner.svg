@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="340" viewBox="0 0 1200 340" role="img" aria-label="Ryan Andrade — arquiteto de software e fundador da RYXN">
+  <!-- Banner animado do perfil, versão pessoal (23/11/2026): o nome vem primeiro e a RYXN aparece como o estúdio do Ryan.
+       Cores do guia visual da RYXN (Portifolio/docs/redesign): night, paper, blue, blue-soft.
+       Só CSS dentro do SVG: o GitHub mostra o SVG como imagem, então script não roda, mas animação CSS roda. -->
+  <style>
+    .bg { fill: #070d18; }
+    .grain { fill: url(#glow); }
+    .word {
+      font-family: 'Archivo', 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 900; font-size: 112px;
+      fill: transparent; stroke: #f4f0e8; stroke-width: 1.6;
+      stroke-dasharray: 700; stroke-dashoffset: 700;
+      animation: draw 2.2s ease-out forwards, fill .8s ease-out 1.9s forwards;
+    }
+    .italic {
+      font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+      font-style: italic; font-weight: 300; font-size: 34px; fill: #8fa8f5;
+      opacity: 0; animation: rise .9s ease-out 2.2s forwards;
+    }
+    .label {
+      font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+      font-size: 14px; letter-spacing: 3px; fill: #a9b4c4;
+      opacity: 0; animation: rise .9s ease-out 2.6s forwards;
+    }
+    .studio { fill: #8fa8f5; }
+    .bar { fill: #2855d9; transform-origin: 70px 0; transform: scaleX(0);
+      animation: grow 1.1s cubic-bezier(.7,0,.2,1) 1.4s forwards; }
+    .dot { fill: #2855d9; animation: pulse 2.4s ease-in-out 3s infinite; transform-origin: 1110px 70px; }
+    .orbit { fill: none; stroke: #c7ccd4; stroke-opacity: .14; stroke-width: 1;
+      transform-origin: 1000px 170px; animation: spin 40s linear infinite; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    @keyframes fill { to { fill: #f4f0e8; stroke-width: 0; } }
+    @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    @keyframes grow { to { transform: scaleX(1); } }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .35; transform: scale(1.8); } }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    /* Quem pediu menos movimento no sistema vê o banner pronto, sem animação. */
+    @media (prefers-reduced-motion: reduce) {
+      .word, .italic, .label, .bar, .dot, .orbit { animation: none; opacity: 1; transform: none; stroke-dashoffset: 0; }
+      .word { fill: #f4f0e8; stroke-width: 0; }
+    }
+  </style>
+  <defs>
+    <radialGradient id="glow" cx="85%" cy="40%" r="55%">
+      <stop offset="0" stop-color="#2855d9" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#070d18" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect class="bg" width="1200" height="340" rx="18"/>
+  <rect class="grain" width="1200" height="340" rx="18"/>
+
+  <g class="orbit">
+    <ellipse cx="1000" cy="170" rx="190" ry="110"/>
+    <ellipse cx="1000" cy="170" rx="130" ry="190" transform="rotate(35 1000 170)"/>
+    <circle cx="1000" cy="170" r="60"/>
+  </g>
+
+  <text class="label" x="72" y="84">[ OLÁ, EU SOU ]</text>
+  <circle class="dot" cx="1110" cy="70" r="6"/>
+
+  <!-- textLength trava a largura: se a fonte Archivo não existir na máquina de quem vê, o nome não estoura o banner. -->
+  <text class="word" x="66" y="210" textLength="800" lengthAdjust="spacingAndGlyphs">RYAN ANDRADE</text>
+  <rect class="bar" x="70" y="232" width="300" height="6" rx="3"/>
+
+  <text class="italic" x="72" y="286">arquiteto de software e fundador da RYXN.</text>
+  <text class="label" x="72" y="318">SISTEMAS · APPS · SITES · VÍDEOS E 3D · <tspan class="studio">IA E AGENTES</tspan></text>
+</svg>
